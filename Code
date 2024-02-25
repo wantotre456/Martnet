@@ -1,0 +1,20 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/listings')
+def listings():
+    # Dummy data for listings
+    listings = [
+        {'title': 'Product 1', 'price': '$10'},
+        {'title': 'Product 2', 'price': '$20'},
+        {'title': 'Product 3', 'price': '$30'}
+    ]
+    return render_template('listings.html', listings=listings)
+
+if __name__ == '__main__':
+    app.run(debug=True)
